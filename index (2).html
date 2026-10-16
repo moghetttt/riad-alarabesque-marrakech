@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riad L'Arabesque | Luxury Oasis in Marrakech Medina</title>
+    
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================================================
+           1. CUSTOM PROPERTIES & RESET
+           ========================================================================== */
+        :root {
+            --bg-cream: #FDFBF7;
+            --bg-sand: #F7F2E9;
+            --bg-dark: #0D2818;
+            --emerald: #163B24;
+            --emerald-light: #205233;
+            --gold: #C5A059;
+            --gold-hover: #D4AF37;
+            --gold-soft: rgba(197, 160, 89, 0.15);
+            --text-dark: #2C2A29;
+            --text-muted: #6B6560;
+            --text-light: #FAF8F5;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 20px rgba(0,0,0,0.06);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --font-title: 'Cinzel', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ==========================================================================
+           2. TYPOGRAPHY & UTILITIES
+           ========================================================================== */
+        .section-padding {
+            padding: 100px 5%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .text-center { text-align: center; }
+
+        .section-subtitle {
+            font-family: var(--font-title);
+            color: var(--gold);
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            color: var(--emerald);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .section-title.light { color: var(--text-light); }
+
+        .section-title-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-top: -10px;
+            margin-bottom: 20px;
+            direction: rtl;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto 30px auto;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 32px;
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 0;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--white);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+        }
+
+        .btn-outline-gold {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: transparent;
+        }
+
+        .btn-outline-gold:hover {
+            background-color: var(--gold);
+            color: var(--white);
+        }
+
+        .btn-emerald {
+            background-color: var(--emerald);
+            color: var(--white);
+        }
+
+        .btn-emerald:hover {
+            background-color: var(--emerald-light);
+            transform: translateY(-2px);
+        }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           3. NAVIGATION
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 5%;
+            transition: var(--transition);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+        }
+
+        .navbar.scrolled {
+            background: var(--emerald);
+            padding: 15px 5%;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-title);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .logo .main-name {
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+            display: block;
+            color: var(--text-light);
+        }
+
+        .logo .ar-name {
+            font-size: 0.9rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            padding: 10px 22px;
+            font-size: 0.75rem;
+        }
+
+        .mobile-toggle {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           4. HERO SECTION
+           ========================================================================== */
+        .hero {
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(rgba(13, 40, 24, 0.45), rgba(13, 40, 24, 0.65)), 
+                        url('images/hero-view.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-title);
+            color: var(--gold);
+            letter-spacing: 4px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .hero-title {
+            font-family: var(--font-title);
+            font-size: 3.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.1;
+            letter-spacing: 2px;
+        }
+
+        .hero-arabic {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+            font-weight: 300;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 1.2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
+        }
+
+        /* ==========================================================================
+           5. ABOUT SECTION
+           ========================================================================== */
+        .about {
+            background-color: var(--bg-cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img-wrapper {
+            position: relative;
+        }
+
+        .about-img-main {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-img-accent {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border: 8px solid var(--bg-cream);
+            box-shadow: var(--shadow-sm);
+            border-radius: 4px;
+        }
+
+        .about-badge {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            background: var(--emerald);
+            color: var(--gold);
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--gold);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .about-badge .rating {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: var(--font-title);
+            display: block;
+            line-height: 1;
+        }
+
+        .about-badge .reviews {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-top: 5px;
+            display: block;
+        }
+
+        .about-text p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--emerald);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .highlight-item i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        /* ==========================================================================
+           6. GALLERY SECTION
+           ========================================================================== */
+        .gallery {
+            background-color: var(--bg-sand);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(13, 40, 24, 0.8), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            color: var(--white);
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+        }
+
+        .gallery-overlay span {
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ==========================================================================
+           7. ROOMS & SUITES
+           ========================================================================== */
+        .rooms {
+            background-color: var(--bg-cream);
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .room-card {
+            background: var(--white);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .room-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .room-img {
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .room-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .room-card:hover .room-img img {
+            transform: scale(1.05);
+        }
+
+        .room-price-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--emerald);
+            color: var(--gold);
+            padding: 8px 15px;
+            font-family: var(--font-title);
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .room-info {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .room-title {
+            font-family: var(--font-title);
+            font-size: 1.3rem;
+            color: var(--emerald);
+            margin-bottom: 10px;
+        }
+
+        .room-desc {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .room-features {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px solid var(--bg-sand);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .room-features span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .room-features i {
+            color: var(--gold);
+        }
+
+        /* ==========================================================================
+           8. AMENITIES
+           ========================================================================== */
+        .amenities {
+            background-color: var(--emerald);
+            color: var(--text-light);
+            position: relative;
+            background-image: radial-gradient(rgba(197, 160, 89, 0.1) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .amenity-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 35px 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .amenity-card:hover {
+            background: rgba(197, 160, 89, 0.1);
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .amenity-icon {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .amenity-title {
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        .amenity-desc {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ==========================================================================
+           9. LOCATION SECTION
+           ========================================================================== */
+        .location {
+            background-color: var(--bg-cream);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            font-family: var(--font-title);
+            color: var(--emerald);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .location-address {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .location-address i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        .nearby-list {
+            margin-bottom: 30px;
+        }
+
+        .nearby-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--gold-soft);
+            font-size: 0.9rem;
+        }
+
+        .nearby-item span:first-child {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .nearby-item span:last-child {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .map-container {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 400px;
+            border: 2px solid var(--gold);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ==========================================================================
+           10. CONTACT & BOOKING
+           ========================================================================== */
+        .contact {
+            background-color: var(--bg-sand);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-box {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-box h3 {
+            font-family: var(--font-title);
+            color: var(--emerald);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: var(--gold-soft);
+            color: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .contact-item div h5 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .contact-item div p {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .cta-buttons {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            color: white;
+        }
+
+        /* Booking Form */
+        .booking-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .booking-form label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .booking-form input,
+        .booking-form select,
+        .booking-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: var(--bg-cream);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            border-radius: 0;
+            transition: var(--transition);
+        }
+
+        .booking-form input:focus,
+        .booking-form select:focus,
+        .booking-form textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: var(--white);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* ==========================================================================
+           11. FOOTER
+           ========================================================================== */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 60px 5% 30px 5%;
+            border-top: 2px solid var(--gold);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .footer-about p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-title {
+            font-family: var(--font-title);
+            color: var(--white);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--emerald);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.4);
+            font-size: 0.8rem;
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 55px;
+            height: 55px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border: 2px solid var(--gold);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Modal Confirmation */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-box {
+            background: var(--white);
+            padding: 40px;
+            max-width: 450px;
+            text-align: center;
+            border-top: 4px solid var(--gold);
+            position: relative;
+        }
+
+        /* ==========================================================================
+           12. RESPONSIVE DESIGN
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 2.8rem; }
+            .about-grid, .location-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .about-img-accent { display: none; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle { display: block; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--emerald);
+                flex-direction: column;
+                justify-content: center;
+                transition: var(--transition);
+                box-shadow: var(--shadow-lg);
+            }
+            .nav-links.active { right: 0; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-arabic { font-size: 1.5rem; }
+            .section-title { font-size: 2rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="main-name">RIAD L'ARABESQUE</span>
+                <span class="ar-name">رياض أرابيسك</span>
+            </a>
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#amenities">Amenities</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact" class="btn btn-gold nav-btn">Book Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-tagline">Authentic Luxury Medina Experience</span>
+            <h1 class="hero-title">Riad L'Arabesque</h1>
+            <div class="hero-arabic">رياض أرابيسك</div>
+            <p class="hero-desc">An enchanting sanctuary of peace, traditional Moroccan craft, and modern luxury tucked away in the vibrant heart of Marrakesh.</p>
+            <div class="hero-btns">
+                <a href="#rooms" class="btn btn-gold">Explore Suites</a>
+                <a href="#contact" class="btn btn-outline-gold">Reserve Your Stay</a>
+            </div>
+        </div>
+        <a href="#about" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section-padding about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-img-wrapper reveal">
+                    <img src="images/courtyard-balcony.jpg" alt="Riad Courtyard Balcony View" class="about-img-main">
+                    <img src="images/room-interior.jpg" alt="Traditional Moroccan Room Detail" class="about-img-accent">
+                    <div class="about-badge">
+                        <span class="rating">4.4 ★</span>
+                        <span class="reviews">161 Reviews</span>
+                    </div>
+                </div>
+                <div class="about-text reveal">
+                    <span class="section-subtitle">Welcome to Harmony</span>
+                    <h2 class="section-title">An Oasis of Calm in Marrakesh</h2>
+                    <div class="section-title-arabic">أهلاً وسهلاً بكم</div>
+                    <p>Situated in a historic residential alley in the Medina, Riad L'Arabesque offers a tranquil escape just a 6-minute walk from the iconic Jemaa el-Fnaa square and 15 minutes from the 12th-century Koutoubia Mosque.</p>
+                    <p>Feast your eyes on handcrafted zellige tiles, carved cedar wood, and soothing fountain sounds. Every corner balances authentic heritage architecture with serene comfort.</p>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-walking"></i>
+                            <span>6 min to Jemaa el-Fnaa</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Free Moroccan Breakfast</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-swimming-pool"></i>
+                            <span>Courtyard Dip Pool</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>High-Speed Wi-Fi</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="section-padding gallery" id="gallery">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-subtitle">Visual Experience</span>
+                <h2 class="section-title">The Riad Atmosphere</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal" onclick="openLightbox('images/hero-view.jpg')">
+                    <img src="images/hero-view.jpg" alt="Central Courtyard View">
+                    <div class="gallery-overlay">
+                        <h4>Central Courtyard</h4>
+                        <span>Architecture</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox('images/courtyard-balcony.jpg')">
+                    <img src="images/courtyard-balcony.jpg" alt="Courtyard Balcony View">
+                    <div class="gallery-overlay">
+                        <h4>Balcony View</h4>
+                        <span>Courtyard</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox('images/room-interior.jpg')">
+                    <img src="images/room-interior.jpg" alt="Traditional Suite Interior">
+                    <div class="gallery-overlay">
+                        <h4>Guest Suite Interior</h4>
+                        <span>Interiors</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox('images/corridor-arches.jpg')">
+                    <img src="images/corridor-arches.jpg" alt="Corridor and Stained Glass Arches">
+                    <div class="gallery-overlay">
+                        <h4>Traditional Gallery Corridor</h4>
+                        <span>Craftsmanship</span>
+                    </div>
+                </div>
+                <div class="gallery-item reveal" onclick="openLightbox('images/carved-staircase.jpg')">
+                    <img src="images/carved-staircase.jpg" alt="Carved Plaster Staircase">
+                    <div class="gallery-overlay">
+                        <h4>Hand-Carved Plasterwork</h4>
+                        <span>Architecture</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROOMS SECTION -->
+    <section class="section-padding rooms" id="rooms">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-subtitle">Accommodations</span>
+                <h2 class="section-title">Rooms & Royal Suites</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="rooms-grid">
+                <!-- Room 1 -->
+                <div class="room-card reveal">
+                    <div class="room-img">
+                        <img src="images/room-interior.jpg" alt="Bahia Room">
+                        <span class="room-price-tag">MAD 1,181 / night</span>
+                    </div>
+                    <div class="room-info">
+                        <h3 class="room-title">Bahia Deluxe Room</h3>
+                        <p class="room-desc">Intimate room featuring traditional tadelakt walls, hand-woven linens, and views over the tranquil inner patio fountain.</p>
+                        <div class="room-features">
+                            <span><i class="fas fa-bed"></i> Queen Bed</span>
+                            <span><i class="fas fa-wifi"></i> Free Wi-Fi</span>
+                            <span><i class="fas fa-snowflake"></i> A/C</span>
+                        </div>
+                        <a href="#contact" class="btn btn-outline-gold" onclick="selectRoom('Bahia Deluxe Room')">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Room 2 -->
+                <div class="room-card reveal">
+                    <div class="room-img">
+                        <img src="images/courtyard-balcony.jpg" alt="Koutoubia Suite">
+                        <span class="room-price-tag">MAD 1,450 / night</span>
+                    </div>
+                    <div class="room-info">
+                        <h3 class="room-title">Koutoubia Junior Suite</h3>
+                        <p class="room-desc">Spacious suite adorned with carved plaster details, a private seating lounge, and handcrafted cedar woodwork.</p>
+                        <div class="room-features">
+                            <span><i class="fas fa-bed"></i> King Bed</span>
+                            <span><i class="fas fa-coffee"></i> Breakfast</span>
+                            <span><i class="fas fa-bath"></i> Bathtub</span>
+                        </div>
+                        <a href="#contact" class="btn btn-outline-gold" onclick="selectRoom('Koutoubia Junior Suite')">Inquire Now</a>
+                    </div>
+                </div>
+                <!-- Room 3 -->
+                <div class="room-card reveal">
+                    <div class="room-img">
+                        <img src="images/hero-view.jpg" alt="Royal Arabesque Suite">
+                        <span class="room-price-tag">MAD 2,100 / night</span>
+                    </div>
+                    <div class="room-info">
+                        <h3 class="room-title">Royal Arabesque Suite</h3>
+                        <p class="room-desc">Our flagship suite featuring direct access to the rooftop terrace, a marble bath, private balcony, and opulent decor.</p>
+                        <div class="room-features">
+                            <span><i class="fas fa-crown"></i> VIP Amenities</span>
+                            <span><i class="fas fa-mountain"></i> Terrace</span>
+                            <span><i class="fas fa-couch"></i> Lounge</span>
+                        </div>
+                        <a href="#contact" class="btn btn-outline-gold" onclick="selectRoom('Royal Arabesque Suite')">Inquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AMENITIES SECTION -->
+    <section class="section-padding amenities" id="amenities">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-subtitle">Comfort & Luxury</span>
+                <h2 class="section-title light">Riad Amenities</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="amenities-grid">
+                <div class="amenity-card reveal">
+                    <i class="fas fa-utensils amenity-icon"></i>
+                    <h3 class="amenity-title">Organic Breakfast</h3>
+                    <p class="amenity-desc">Freshly baked Moroccan breads, pastries, jams, fresh orange juice, and mint tea included daily.</p>
+                </div>
+                <div class="amenity-card reveal">
+                    <i class="fas fa-swimming-pool amenity-icon"></i>
+                    <h3 class="amenity-title">Patio Dip Pool</h3>
+                    <p class="amenity-desc">Refresh yourself in our central pool framed by lush tropical greenery and carved archways.</p>
+                </div>
+                <div class="amenity-card reveal">
+                    <i class="fas fa-spa amenity-icon"></i>
+                    <h3 class="amenity-title">Traditional Hammam</h3>
+                    <p class="amenity-desc">Experience authentic Moroccan wellness treatments with black soap scrubs and argan oil massage.</p>
+                </div>
+                <div class="amenity-card reveal">
+                    <i class="fas fa-sun amenity-icon"></i>
+                    <h3 class="amenity-title">Panoramic Rooftop</h3>
+                    <p class="amenity-desc">Soak in the sun with breathtaking views over the Medina roofscape and Atlas Mountains.</p>
+                </div>
+                <div class="amenity-card reveal">
+                    <i class="fas fa-wifi amenity-icon"></i>
+                    <h3 class="amenity-title">High-Speed Fiber</h3>
+                    <p class="amenity-desc">Stay connected effortlessly with complimentary Wi-Fi across all rooms and courtyard areas.</p>
+                </div>
+                <div class="amenity-card reveal">
+                    <i class="fas fa-concierge-bell amenity-icon"></i>
+                    <h3 class="amenity-title">24/7 Concierge</h3>
+                    <p class="amenity-desc">Airport transfers, excursion arrangements, restaurant reservations, and local Medina guidance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION SECTION -->
+    <section class="section-padding location" id="location">
+        <div class="container">
+            <div class="location-grid">
+                <div class="location-info reveal">
+                    <span class="section-subtitle">Heart of Marrakech</span>
+                    <h2 class="section-title">Prime Medina Location</h2>
+                    <div class="location-address">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Riad L’Arabesque</strong><br>
+                            Jdida, 1 D.El Maâden, Marrakesh 40000, Morocco
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); margin-bottom: 25px;">Located in the iconic colorful area of cobbled alleys with spice and textile souks, historic palaces, and tranquil hidden courtyards.</p>
+                    
+                    <h3>Walking Distances</h3>
+                    <div class="nearby-list">
+                        <div class="nearby-item">
+                            <span>Jemaa el-Fnaa Square</span>
+                            <span>6 min walk (500m)</span>
+                        </div>
+                        <div class="nearby-item">
+                            <span>Bahia Palace</span>
+                            <span>8 min walk (650m)</span>
+                        </div>
+                        <div class="nearby-item">
+                            <span>Koutoubia Mosque</span>
+                            <span>15 min walk (1.2km)</span>
+                        </div>
+                        <div class="nearby-item">
+                            <span>Marrakech Menara Airport (RAK)</span>
+                            <span>18 min drive (5.5km)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container reveal">
+                    <!-- Google Maps Iframe -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3397.039234839832!2d-7.9890!3d31.6250!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafee422328fb87%3A0xc31fa583348ebdd!2sJemaa%20el-Fnaa!5e0!3m2!1sen!2sma!4v1680000000000!5m2!1sen!2sma" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & BOOKING -->
+    <section class="section-padding contact" id="contact">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-subtitle">Get In Touch</span>
+                <h2 class="section-title">Direct Booking & Inquiries</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="contact-grid">
+                <!-- Contact Details -->
+                <div class="contact-box reveal">
+                    <h3>Contact Information</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 30px;">For instant reservations, special requests, or airport transfer arrangements, contact our hospitality desk directly.</p>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h5>Phone & WhatsApp</h5>
+                            <p>+212 5 24 37 60 20</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h5>Email Address</h5>
+                            <p>contact@riad-larabesque.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h5>Reception Hours</h5>
+                            <p>24/7 Guest Desk Available</p>
+                        </div>
+                    </div>
+
+                    <div class="cta-buttons">
+                        <a href="https://wa.me/212524376020?text=Hello,%20I%20would%20like%20to%20inquire%20about%20booking%20a%20room%20at%20Riad%20L'Arabesque" target="_blank" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Booking Form -->
+                <div class="contact-box reveal">
+                    <h3>Reservation Inquiry</h3>
+                    <form class="booking-form" id="bookingForm" onsubmit="handleBooking(event)">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="guestName" placeholder="e.g. Sarah Jenkins" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Check-In Date</label>
+                                <input type="date" id="checkIn" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Check-Out Date</label>
+                                <input type="date" id="checkOut" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Selected Room</label>
+                                <select id="roomSelect">
+                                    <option value="Bahia Deluxe Room">Bahia Deluxe Room</option>
+                                    <option value="Koutoubia Junior Suite">Koutoubia Junior Suite</option>
+                                    <option value="Royal Arabesque Suite">Royal Arabesque Suite</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Guests</label>
+                                <select id="guestCount">
+                                    <option value="1 Guest">1 Guest</option>
+                                    <option value="2 Guests" selected>2 Guests</option>
+                                    <option value="3 Guests">3 Guests</option>
+                                    <option value="4+ Guests">4+ Guests</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Special Requests or Notes</label>
+                            <textarea id="notes" rows="3" placeholder="Airport transfer needed, dietary requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-gold" style="width: 100%;">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="footer-logo">RIAD L'ARABESQUE</div>
+                    <p>An authentic luxury riad nestled in the heart of Marrakech Medina. Dedicated to timeless Moroccan hospitality, handcrafted elegance, and serene relaxation.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Riad</a></li>
+                        <li><a href="#rooms">Rooms & Suites</a></li>
+                        <li><a href="#gallery">Photo Gallery</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#amenities">Traditional Spa & Hammam</a></li>
+                        <li><a href="#amenities">Rooftop Terrace Dining</a></li>
+                        <li><a href="#contact">Airport Transfers</a></li>
+                        <li><a href="#contact">Guided Medina Tours</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Address</h4>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.8;">
+                        Riad L’Arabesque<br>
+                        Jdida, 1 D.El Maâden<br>
+                        Marrakesh 40000, Morocco<br><br>
+                        <strong>Tel:</strong> +212 5 24 37 60 20
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Riad L'Arabesque Marrakech. All Rights Reserved. Designed with traditional Moroccan elegance.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/212524376020" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Enlarged view" class="lightbox-content" id="lightboxImage">
+    </div>
+
+    <!-- Booking Confirmation Modal -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-box">
+            <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--gold); margin-bottom: 15px;"></i>
+            <h3 style="font-family: var(--font-title); color: var(--emerald); margin-bottom: 10px;">Inquiry Received!</h3>
+            <p id="modalMsg" style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;"></p>
+            <button class="btn btn-gold" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Navbar scroll behavior
+        const navbar = id('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileToggle = id('mobileToggle');
+        const navLinks = id('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.querySelector('i').className = 'fas fa-bars';
+            });
+        });
+
+        // Scroll Reveal Animations
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', reveal);
+        reveal(); // Initial call
+
+        // Lightbox Functions
+        function openLightbox(src) {
+            id('lightboxImage').src = src;
+            id('lightboxModal').classList.add('active');
+        }
+
+        function closeLightbox() {
+            id('lightboxModal').classList.remove('active');
+        }
+
+        // Pre-select Room in Booking Form
+        function selectRoom(roomName) {
+            id('roomSelect').value = roomName;
+        }
+
+        // Form Handling
+        function handleBooking(e) {
+            e.preventDefault();
+            const name = id('guestName').value;
+            const room = id('roomSelect').value;
+            const checkIn = id('checkIn').value;
+            
+            id('modalMsg').innerText = `Thank you, ${name}! Your inquiry for the ${room} (Check-In: ${checkIn}) has been sent. Our concierge will contact you shortly.`;
+            id('confirmModal').style.display = 'flex';
+            id('bookingForm').reset();
+        }
+
+        function closeModal() {
+            id('confirmModal').style.display = 'none';
+        }
+
+        // Utility function
+        function id(elementId) {
+            return document.getElementById(elementId);
+        }
+
+        // Set minimum dates for inputs
+        const today = new Date().toISOString().split('T')[0];
+        id('checkIn').setAttribute('min', today);
+        id('checkOut').setAttribute('min', today);
+    </script>
+</body>
+</html>
